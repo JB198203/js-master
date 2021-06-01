@@ -1,12 +1,15 @@
 function clickFooter() {
-    let footerClickNum = 0
+    let footerClickNumber = 0
     let footer = document.getElementsByTagName("footer")[0];
     let onFooterClick = function() {
-        footerClickNum++;
-        console.log(`clic n° ${footerClickNum}`);
+        footerClickNumber++;
+        console.log(`clic n° ${footerClickNumber}`);
     };
     footer.addEventListener("click", onFooterClick);
 };
+
+//================================================================================================
+
 
 function hamburgerMenu() {
     let menuButton = document.getElementsByClassName("navbar-toggler")[0];
@@ -24,6 +27,9 @@ function hamburgerMenu() {
     menuButton.addEventListener("click", onMenuNavClick);
 };
 
+//================================================================================================
+
+
 function redTextClicked() {
     let editButton = document.getElementsByClassName("col-md-4")[0].querySelectorAll("button")[1];
     let onEditButtonClick = function() {
@@ -32,6 +38,11 @@ function redTextClicked() {
     };
     editButton.addEventListener("click", onEditButtonClick);
 };
+
+
+
+//================================================================================================
+
 
 function greenTextToggle() {
     let editButton = document.getElementsByClassName("col-md-4")[1].querySelectorAll("button")[1];
@@ -49,6 +60,10 @@ function greenTextToggle() {
     editButton.addEventListener("click", onEditGreenClick);
 };
 
+
+//================================================================================================
+
+
 function nucleariseBootstrap() {
     let navBar = document.getElementsByClassName("navbar navbar-dark bg-dark box-shadow")[0];
     let bootStrapToggle = true;
@@ -65,6 +80,11 @@ function nucleariseBootstrap() {
     };
     navBar.addEventListener("dblclick", onDblClickBootstrapLink);
 };
+
+
+
+//================================================================================================
+
 
 function toggleCardView() {
     let cardElt = document.querySelectorAll('.card');
@@ -87,83 +107,9 @@ function toggleCard(cardElt) {
     });
 };
 
-function turnCardsForward() {
-    let btnForward = document.getElementsByClassName("btn-secondary")[0];
-    let onBtnForwardClick = function() {
-        let cards = document.getElementsByClassName("col-md-4")[0].parentElement;
-        let last = cards.children[5]
-        let first = cards.children[0]
-        cards.insertBefore(last, first);
-    };
-    btnForward.addEventListener("click", onBtnForwardClick);
-};
+//================================================================================================
 
-function turnCardsBackward() {
-    let btnBackward = document.getElementsByClassName("btn-primary")[0];
-    let onBtnBackwardClick = function(e) {
-        e.preventDefault();
-        let cards = document.getElementsByClassName("col-md-4")[0].parentElement;
-        let last = cards.children[5]
-        let first = cards.children[0]
-        cards.insertBefore(first, last.nextSibling);
-    };
-    btnBackward.addEventListener("click", onBtnBackwardClick);
-};
 
-function wtfLand() {
-    let btnElt = document.querySelector('.navbar .navbar-brand strong');
-    let listElt = document.querySelector('.album .row');
-    let cardElt = listElt.querySelectorAll('.col-md-4');
-    document.addEventListener("keydown", e => {
-        if (_isLogoTextSelected(btnElt) == false) return false;
-        _keydownList(e, listElt);
-        _keydownCards(e, cardElt);
-    });
-};
-
-function _isLogoTextSelected(btnElt) {
-    let logoText = btnElt.textContent;
-    let selectedText = window.getSelection().focusNode.textContent;
-    if (logoText !== selectedText) {
-        return false;
-    };
-};
-
-function _keydownList(event, listElt) {
-    switch (event.key) {
-        case 'y':
-            listElt.classList.add('justify-content-center');
-            listElt.classList.remove('justify-content-end');
-            break;
-        case 'p':
-            listElt.classList.className = '';
-            listElt.classList.remove('justify-content-center');
-            listElt.classList.add('justify-content-end');
-            break;
-        case 'a':
-        case 'b':
-            listElt.classList.remove('justify-content-center');
-            listElt.classList.remove('justify-content-end');
-            break;
-    };
-};
-
-function _keydownCards(event, cardElt) {
-    for (let i = 0; i < cardElt.length; i++) {
-        cardElt[i].className = '';
-        switch (event.key) {
-            case 'a':
-            case 'y':
-            case 'p':
-                cardElt[i].classList.add('col-md-3');
-                break;
-            case 'b':
-                cardElt[i].className = '';
-                cardElt[i].classList.add('col-md-4');
-                break;
-        };
-    };
-};
 
 clickFooter();
 hamburgerMenu();
@@ -171,6 +117,3 @@ redTextClicked();
 greenTextToggle();
 nucleariseBootstrap();
 toggleCardView();
-turnCardsForward();
-turnCardsBackward();
-wtfLand();
